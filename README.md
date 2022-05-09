@@ -1,6 +1,7 @@
 # Ferris Sweep Keymap Configuration
 
-My qmk keymap configuration for the Ferris Sweep keyboard.
+My qmk keymap configuration for the
+[Ferris Sweep](https://github.com/davidphilipbarr/Sweep) keyboard.
 
 # Usage
 
