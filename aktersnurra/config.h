@@ -20,10 +20,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // assuming a screen refresh rate of 60 Htz or higher
 // The default is 50. This makes the mouse ~3 times faster and more accurate
 #define MOUSEKEY_INTERVAL 16
-// The default is 20. Since we made the mouse about 3 times faster with the previous setting,
-// give it more time to accelerate to max speed to retain precise control over short distances.
+// The default is 20. Since we made the mouse about 3 times faster with the
+// previous setting, give it more time to accelerate to max speed to retain
+// precise control over short distances.
 #define MOUSEKEY_TIME_TO_MAX 40
-// The default is 300. Let's try and make this as low as possible while keeping the cursor responsive
+// The default is 300. Let's try and make this as low as possible while keeping
+// the cursor responsive
 #define MOUSEKEY_DELAY 100
 // It makes sense to use the same delay for the mouseweel
 #define MOUSEKEY_WHEEL_DELAY 100
@@ -40,8 +42,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 // Underglow configuration
 #ifdef RGBLIGHT_ENABLE
-  #define RGBLIGHT_ANIMATIONS
-  #define RGBLIGHT_HUE_STEP 8
-  #define RGBLIGHT_SAT_STEP 8
-  #define RGBLIGHT_VAL_STEP 8
+#define RGBLIGHT_ANIMATIONS
+#define RGBLIGHT_HUE_STEP 8
+#define RGBLIGHT_SAT_STEP 8
+#define RGBLIGHT_VAL_STEP 8
 #endif
