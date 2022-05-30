@@ -35,15 +35,13 @@ enum ferris_tap_dances {
 
 // Tap Dance Definitions
 qk_tap_dance_action_t tap_dance_actions[] = {
-    [Q_ESC] = ACTION_TAP_DANCE_DOUBLE(KC_Q, KC_ESC),
-    [M_ESC] = ACTION_TAP_DANCE_DOUBLE(KC_M, KC_ESC),
-    [G_ESC] = ACTION_TAP_DANCE_DOUBLE(KC_G, KC_ESC)
+    [M_ESC] = ACTION_TAP_DANCE_DOUBLE(KC_M, KC_ESC)
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_COLEMAK_DH] = LAYOUT( /* QWERTY */
-    TD(Q_ESC), KC_W,   KC_F,   KC_P,   KC_B,            KC_J,      KC_L,   KC_U,    KC_Y,   KC_SCLN,
-    KC_HMA,    KC_HMR, KC_HMS, KC_HMT, TD(G_ESC),       TD(M_ESC), KC_HMN, KC_HME,  KC_HMI, KC_HMO,
+    KC_Q,      KC_W,   KC_F,   KC_P,   KC_B,            KC_J,      KC_L,   KC_U,    KC_Y,   KC_SCLN,
+    KC_HMA,    KC_HMR, KC_HMS, KC_HMT, KC_G,            TD(M_ESC), KC_HMN, KC_HME,  KC_HMI, KC_HMO,
     KC_Z,      KC_X,   KC_C,   KC_D,   KC_V,            KC_K,      KC_H,   KC_COMM, KC_DOT, KC_SLSH,
                                LOWER,  KC_SPC,          KC_BSPC,   RAISE
   ),
