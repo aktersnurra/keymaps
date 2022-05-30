@@ -39,7 +39,7 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-  [_COLEMAK_DH] = LAYOUT( /* QWERTY */
+  [_COLEMAK_DH] = LAYOUT( /* COLEMAK MOD DH */
     KC_Q,      KC_W,   KC_F,   KC_P,   KC_B,            KC_J,      KC_L,   KC_U,    KC_Y,   KC_SCLN,
     KC_HMA,    KC_HMR, KC_HMS, KC_HMT, KC_G,            TD(M_ESC), KC_HMN, KC_HME,  KC_HMI, KC_HMO,
     KC_Z,      KC_X,   KC_C,   KC_D,   KC_V,            KC_K,      KC_H,   KC_COMM, KC_DOT, KC_SLSH,
