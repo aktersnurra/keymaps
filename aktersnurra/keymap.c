@@ -30,8 +30,8 @@ enum ferris_tap_dances {
 #define KC_HME CTL_T(KC_E)
 #define KC_HMN SFT_T(KC_N)
 
-#define LOWER LT(_LOWER, KC_ENT)
-#define RAISE LT(_RAISE, KC_TAB)
+#define LOWER LT(_LOWER, KC_SPC)
+#define RAISE LT(_RAISE, KC_BSPC)
 
 // Tap Dance Definitions
 qk_tap_dance_action_t tap_dance_actions[] = {
@@ -43,7 +43,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_Q,      KC_W,   KC_F,   KC_P,   KC_B,            KC_J,      KC_L,   KC_U,    KC_Y,   KC_SCLN,
     KC_HMA,    KC_HMR, KC_HMS, KC_HMT, KC_G,            TD(M_ESC), KC_HMN, KC_HME,  KC_HMI, KC_HMO,
     KC_Z,      KC_X,   KC_C,   KC_D,   KC_V,            KC_K,      KC_H,   KC_COMM, KC_DOT, KC_SLSH,
-                               LOWER,  KC_SPC,          KC_BSPC,   RAISE
+                               KC_ENT,  LOWER,          RAISE,   KC_TAB
   ),
 
   [_LOWER] = LAYOUT( /* [> LOWER <] */
