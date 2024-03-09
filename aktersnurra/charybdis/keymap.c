@@ -18,36 +18,38 @@
 #define KC_HE CTL_T(KC_E)
 #define KC_HN SFT_T(KC_N)
 
+#define KC_SLBRC SFT_T(KC_LBRC)
+#define KC_SRPRN SFT_T(KC_RPRN)
+
 #define KC_ALT_CTL LALT(KC_LCTL)
 
 #define NAV LT(_NAV, KC_SPC)
 #define SYM LT(_SYM, KC_BSPC)
 #define NUM LT(_NUM, KC_TAB)
-#define MOU LT(_MOU, KC_ESC)
 #define CHARYBDIS_AUTO_SNIPING_ON_LAYER _MOU
 
-enum { _COLEMAK_DH, _NAV, _NUM, _SYM, _FUN, _MEDIA, _MOU } layers;
+enum { _COLEMAK_DH, _NAV, _NUM, _SYM, _FUN, _MEDIA, } layers;
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_COLEMAK_DH] = LAYOUT( /* COLEMAK MOD DH */
     KC_Q,  KC_W,  KC_F,  KC_P,   KC_B,                  KC_J,      KC_L,  KC_U,    KC_Y,   KC_SCLN,
     KC_HA, KC_HR, KC_HS, KC_HT,  KC_G,                  KC_M,      KC_HN, KC_HE,   KC_HI,  KC_HO,
     KC_Z,  KC_X,  KC_C,  KC_D,   KC_V,                  KC_K,      KC_H,  KC_COMM, KC_DOT, KC_SLSH,
-                  KC_ENT, NAV,   MOU,                   SYM,       NUM
-  ),
-
-  [_NAV] = LAYOUT( /* [> Navigation layer <] */
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_LPRN, KC_LBRC, KC_RBRC, KC_RPRN,        KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_BSLS,
-                      KC_TRNS, KC_TRNS, KC_TRNS,        KC_BSPC, KC_LSFT
+                  KC_ENT, NAV,   KC_ESC,                SYM,       NUM
   ),
 
   [_SYM] = LAYOUT( /* [> Symbol layer <] */
-    KC_GRV,  KC_EXLM, KC_PERC, KC_DLR,  KC_AT,          KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_HASH, KC_QUOT, KC_ASTR, KC_MINS, KC_EQL,         KC_PIPE, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_AMPR, KC_CIRC, KC_TRNS,        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_BSLS,
-                      KC_TRNS, KC_SPC,  KC_TRNS,        KC_TRNS, KC_TRNS
+    KC_TRNS, KC_EXLM, KC_PERC, KC_DLR,   KC_AT,         KC_GRV,  KC_ASTR,  KC_CIRC, KC_TRNS, KC_TRNS,
+    KC_AMPR, KC_HASH, KC_LPRN, KC_SRPRN, KC_MINS,       KC_EQL,  KC_SLBRC, KC_RBRC, KC_QUOT, KC_PIPE,
+    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS,       KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_BSLS,
+                      KC_TRNS, KC_SPC,   KC_TRNS,       KC_TRNS, KC_TRNS
+  ),
+
+  [_NAV] = LAYOUT( /* [> Mouse/Nav layer <] */
+    KC_TRNS, KC_TRNS, KC_WH_D, KC_WH_U, KC_TRNS,        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+    KC_TRNS, KC_TRNS, KC_BTN1, KC_BTN2, KC_TRNS,        KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, KC_TRNS,
+    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                      KC_TRNS, KC_TRNS, KC_TRNS,        KC_BSPC, KC_TRNS
   ),
 
   [_NUM] = LAYOUT( /* [> Number layer <] */
@@ -58,23 +60,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [_MEDIA] = LAYOUT( /* [> Media layer <] */
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,        KC_TRNS, KC_MPRV, KC_MPLY, KC_MNXT, KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,        KC_TRNS, KC_VOLD, KC_VOLU, KC_MUTE, KC_TRNS,
+    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+    KC_TRNS, KC_MPRV, KC_MPLY, KC_MNXT, KC_TRNS,        KC_TRNS, KC_VOLD, KC_VOLU, KC_MUTE, KC_TRNS,
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                       KC_TRNS, KC_TRNS, KC_TRNS,        KC_TRNS, KC_TRNS
   ),
 
   [_FUN] = LAYOUT( /* [> Function layer <] */
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,    KC_TRNS,        KC_TRNS, KC_TRNS, KC_TRNS, EE_CLR,  QK_BOOT,
+    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,    KC_TRNS,        KC_TRNS, QK_BOOT, KC_TRNS, KC_TRNS, EE_CLR, 
     KC_TRNS, KC_TRNS, KC_TRNS, KC_ALT_CTL, KC_TRNS,        KC_TRNS, KC_F1,   KC_F2,   KC_F3,   KC_TRNS,
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,    KC_TRNS,        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                         KC_TRNS, KC_TRNS, KC_TRNS,        KC_TRNS, KC_TRNS
+                      KC_TRNS, KC_TRNS,    KC_TRNS,        KC_TRNS, KC_TRNS
   ),
-  
-  [_MOU] = LAYOUT( /* [> Mouse layer <] */
-    KC_TRNS, KC_TRNS, KC_TRNS,    KC_TRNS,    KC_TRNS,        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_BTN1,    KC_BTN2,    KC_TRNS,        KC_TRNS, KC_WH_D, KC_WH_U, KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_TRNS,    KC_TRNS,    KC_TRNS,        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                         KC_TRNS, KC_TRNS,    KC_TRNS,        KC_TRNS, KC_TRNS
-  )
 };
