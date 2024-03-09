@@ -1,5 +1,5 @@
 enum td_keycodes {
-  SFT_RP // `LSFT` when held, `(` when tapped.
+  SFT_RP // `LSFT` when held, `)` when tapped.
 };
 
 typedef enum {
