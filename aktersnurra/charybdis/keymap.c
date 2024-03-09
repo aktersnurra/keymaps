@@ -2,6 +2,7 @@
 // This is the canonical layout file for the Quantum project. If you want to add another keyboard,
 
 #include QMK_KEYBOARD_H
+#include "../sftrp.c"
 
 // Each layer gets a name for readability, which is then used in the keymap matrix below.
 // The underscores don't mean anything - you can have a layer called STUFF or any other name.
@@ -19,7 +20,6 @@
 #define KC_HN SFT_T(KC_N)
 
 #define KC_SLBRC SFT_T(KC_LBRC)
-#define KC_SRPRN SFT_T(KC_RPRN)
 
 #define KC_ALT_CTL LALT(KC_LCTL)
 
@@ -40,7 +40,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_SYM] = LAYOUT( /* [> Symbol layer <] */
     KC_TRNS, KC_EXLM, KC_PERC, KC_DLR,   KC_AT,         KC_GRV,  KC_ASTR,  KC_CIRC, KC_TRNS, KC_TRNS,
-    KC_AMPR, KC_HASH, KC_LPRN, KC_SRPRN, KC_MINS,       KC_EQL,  KC_SLBRC, KC_RBRC, KC_QUOT, KC_PIPE,
+    KC_AMPR, KC_HASH, KC_LPRN, TD(SFT_RP), KC_MINS,     KC_EQL,  KC_SLBRC, KC_RBRC, KC_QUOT, KC_PIPE,
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS,       KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_BSLS,
                       KC_TRNS, KC_SPC,   KC_TRNS,       KC_TRNS, KC_TRNS
   ),

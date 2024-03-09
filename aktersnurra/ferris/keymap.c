@@ -1,4 +1,5 @@
 #include QMK_KEYBOARD_H
+#include "../sftrp.c"
 
 #define KC_HA GUI_T(KC_A)
 #define KC_HR ALT_T(KC_R)
@@ -37,7 +38,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_SYM] = LAYOUT( /* [> Symbol layer <] */
     KC_TRNS, KC_EXLM, KC_PERC, KC_DLR,   KC_AT,         KC_GRV,  KC_ASTR,  KC_CIRC, KC_TRNS, KC_TRNS,
-    KC_AMPR, KC_HASH, KC_LPRN, KC_SRPRN, KC_MINS,       KC_EQL,  KC_SLBRC, KC_RBRC, KC_QUOT, KC_PIPE,
+    KC_AMPR, KC_HASH, KC_LPRN, TD(SFT_RP), KC_MINS,     KC_EQL,  KC_SLBRC, KC_RBRC, KC_QUOT, KC_PIPE,
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS,       KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_BSLS,
                                KC_TRNS,  KC_SPC,        KC_TRNS, KC_TRNS
   ),
