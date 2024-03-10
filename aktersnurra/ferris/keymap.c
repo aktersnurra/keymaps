@@ -21,16 +21,17 @@
 #define NUM LT(_NUM, KC_TAB)
 
 enum { _COLEMAK_DH, _NAV, _NUM, _SYM, _FUN, _MEDIA } layers;
-enum { TD_J_ESC } tap_dances;
+enum { J_ESC } tap_dances;
 
 // Tap Dance Definitions
 tap_dance_action_t tap_dance_actions[] = {
-    [TD_J_ESC] = ACTION_TAP_DANCE_DOUBLE(KC_J, KC_ESC)
+    [J_ESC] = ACTION_TAP_DANCE_DOUBLE(KC_J, KC_ESC),
+    [SFT_RP] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, sftrp_finished, sftrp_reset)
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_COLEMAK_DH] = LAYOUT( /* COLEMAK MOD DH */
-    KC_Q,  KC_W,  KC_F,  KC_P,   KC_B,                  TD(TD_J_ESC), KC_L,  KC_U,    KC_Y,   KC_SCLN,
+    KC_Q,  KC_W,  KC_F,  KC_P,   KC_B,                  TD(J_ESC), KC_L,  KC_U,    KC_Y,   KC_SCLN,
     KC_HA, KC_HR, KC_HS, KC_HT,  KC_G,                  KC_M, KC_HN, KC_HE,   KC_HI,  KC_HO,
     KC_Z,  KC_X,  KC_C,  KC_D,   KC_V,                  KC_K, KC_H,  KC_COMM, KC_DOT, KC_SLSH,
                          KC_ENT, NAV,                   SYM,  NUM

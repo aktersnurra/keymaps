@@ -1,5 +1,5 @@
 enum td_keycodes {
-  SFT_RP // `LSFT` when held, `)` when tapped.
+  SFT_RP, // `LSFT` when held, `)` when tapped.
 };
 
 typedef enum {
@@ -63,7 +63,3 @@ void sftrp_reset(tap_dance_state_t *state, void *user_data) {
     break;
   }
 }
-
-tap_dance_action_t tap_dance_actions[] = {
-    [SFT_RP] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, sftrp_finished, sftrp_reset)};
-
