@@ -15,7 +15,6 @@ td_state_t cur_dance(tap_dance_state_t *state) {
     else
       return TD_SINGLE_HOLD;
   }
-
   if (state->count == 2)
     return TD_DOUBLE_SINGLE_TAP;
   else
