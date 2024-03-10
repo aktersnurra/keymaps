@@ -38,11 +38,3 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define TAPPING_TERM 150
 #define PERMISSIVE_HOLD
 #define TAPPING_FORCE_HOLD
-
-// Underglow configuration
-#ifdef RGBLIGHT_ENABLE
-#define RGBLIGHT_ANIMATIONS
-#define RGBLIGHT_HUE_STEP 8
-#define RGBLIGHT_SAT_STEP 8
-#define RGBLIGHT_VAL_STEP 8
-#endif

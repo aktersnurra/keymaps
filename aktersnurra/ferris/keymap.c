@@ -22,11 +22,10 @@
 
 enum { _COLEMAK_DH, _NAV, _NUM, _SYM, _FUN, _MEDIA } layers;
 enum td_keycodes {
-  SFT_RP, // `LSFT` when held, `)` when tapped.
+  SFT_RP,
   J_ESC
 };
 
-// Tap Dance Definitions
 tap_dance_action_t tap_dance_actions[] = {
     [J_ESC] = ACTION_TAP_DANCE_DOUBLE(KC_J, KC_ESC),
     [SFT_RP] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, sftrp_finished, sftrp_reset)
