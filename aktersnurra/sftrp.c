@@ -1,7 +1,3 @@
-enum td_keycodes {
-  SFT_RP, // `LSFT` when held, `)` when tapped.
-};
-
 typedef enum {
   TD_NONE,
   TD_UNKNOWN,

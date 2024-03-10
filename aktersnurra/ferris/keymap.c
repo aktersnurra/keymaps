@@ -21,7 +21,10 @@
 #define NUM LT(_NUM, KC_TAB)
 
 enum { _COLEMAK_DH, _NAV, _NUM, _SYM, _FUN, _MEDIA } layers;
-enum { J_ESC } tap_dances;
+enum td_keycodes {
+  SFT_RP, // `LSFT` when held, `)` when tapped.
+  J_ESC
+};
 
 // Tap Dance Definitions
 tap_dance_action_t tap_dance_actions[] = {
