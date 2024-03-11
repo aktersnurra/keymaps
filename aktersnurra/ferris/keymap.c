@@ -41,9 +41,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_SYM] = LAYOUT( /* [> Symbol layer <] */
     KC_TRNS, KC_EXLM, KC_PERC, KC_DLR,     KC_AMPR,     KC_AT,  KC_ASTR,  KC_CIRC, KC_TRNS, KC_TRNS,
-    KC_GRV,  KC_HASH,  KC_LPRN, TD(SFT_RP), KC_MINS,    KC_EQL,  KC_SLBRC, KC_RBRC, KC_QUOT, KC_PIPE,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS,       KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_BSLS,
-                               KC_TRNS,  KC_SPC,        KC_TRNS, KC_TRNS
+    KC_GRV,  KC_HASH, KC_LPRN, TD(SFT_RP), KC_MINS,     KC_EQL,  KC_SLBRC, KC_RBRC, KC_QUOT, KC_PIPE,
+    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,    KC_TRNS,     KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_BSLS,
+                               KC_TRNS,    KC_SPC,      KC_TRNS, KC_TRNS
   ),
 
   [_NAV] = LAYOUT( /* [> Navigation layer <] */

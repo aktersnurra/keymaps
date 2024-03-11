@@ -38,7 +38,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_SYM] = LAYOUT( /* [> Symbol layer <] */
     KC_TRNS, KC_EXLM, KC_PERC, KC_DLR,     KC_AMPR,     KC_AT,  KC_ASTR,  KC_CIRC, KC_TRNS, KC_TRNS,
-    KC_GRV,  KC_HASH,  KC_LPRN, TD(SFT_RP), KC_MINS,    KC_EQL,  KC_SLBRC, KC_RBRC, KC_QUOT, KC_PIPE,
+    KC_GRV,  KC_HASH, KC_LPRN, TD(SFT_RP), KC_MINS,     KC_EQL,  KC_SLBRC, KC_RBRC, KC_QUOT, KC_PIPE,
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,    KC_TRNS,     KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_BSLS,
                       KC_TRNS, KC_SPC,     KC_TRNS,     KC_TRNS, KC_TRNS
   ),
@@ -51,9 +51,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [_NUM] = LAYOUT( /* [> Number layer <] */
-    KC_TRNS, KC_4,    KC_5,    KC_6,        KC_TRNS,         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_1,    KC_2,    KC_3,        KC_0,            KC_TRNS, KC_7,    KC_8,    KC_9,    KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS,         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+    KC_TRNS, KC_4,    KC_5,        KC_6,     KC_TRNS,        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+    KC_TRNS, KC_1,    KC_2,        KC_3,     KC_0,           KC_TRNS, KC_7,    KC_8,    KC_9,    KC_TRNS,
+    KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS,  KC_TRNS,        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                       MO(_MEDIA),  MO(_FUN), KC_TRNS,        KC_TRNS, KC_TRNS
   ),
 

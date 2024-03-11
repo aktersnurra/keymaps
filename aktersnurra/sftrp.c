@@ -18,8 +18,7 @@ td_state_t cur_dance(tap_dance_state_t *state) {
   if (state->count == 2)
     return TD_DOUBLE_SINGLE_TAP;
   else
-    return TD_UNKNOWN; // Any number higher than the maximum state value you
-                       // return above
+    return TD_UNKNOWN;
 }
 
 void sftrp_finished(tap_dance_state_t *state, void *user_data) {
@@ -30,10 +29,9 @@ void sftrp_finished(tap_dance_state_t *state, void *user_data) {
     break;
   case TD_SINGLE_HOLD:
     register_mods(MOD_BIT(
-        KC_LSFT)); // For a layer-tap key, use `layer_on(_MY_LAYER)` here
+        KC_LSFT));
     break;
-  case TD_DOUBLE_SINGLE_TAP: // Allow nesting of 2 parens `))` within tapping
-                             // term
+  case TD_DOUBLE_SINGLE_TAP:
     tap_code16(KC_RPRN);
     register_code16(KC_RPRN);
     break;
@@ -49,7 +47,7 @@ void sftrp_reset(tap_dance_state_t *state, void *user_data) {
     break;
   case TD_SINGLE_HOLD:
     unregister_mods(MOD_BIT(
-        KC_LSFT)); // For a layer-tap key, use `layer_off(_MY_LAYER)` here
+        KC_LSFT));
     break;
   case TD_DOUBLE_SINGLE_TAP:
     unregister_code16(KC_RPRN);
