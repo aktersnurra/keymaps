@@ -18,7 +18,7 @@
 #define NAV LT(_NAV, KC_SPC)
 #define SYM LT(_SYM, KC_BSPC)
 #define NUM LT(_NUM, KC_TAB)
-#define CHARYBDIS_AUTO_SNIPING_ON_LAYER _MOU
+#define CHARYBDIS_AUTO_SNIPING_ON_LAYER _NAV
 
 enum { _COLEMAK_DH, _NAV, _NUM, _SYM, _FUN, _MEDIA, } layers;
 enum td_keycodes {
