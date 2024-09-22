@@ -28,5 +28,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define SPLIT_LED_STATE_ENABLE
 #define POINTING_DEVICE_GESTURES_SCROLL_ENABLE
 
-#define Dilemma_MINIMUM_DEFAULT_DPI 400
-#define Dilemma_DEFAULT_DPI_CONFIG_STEP 200
+#define DILEMMA_MINIMUM_DEFAULT_DPI 256
+#define DILEMMA_DEFAULT_DPI_CONFIG_STEP 32
