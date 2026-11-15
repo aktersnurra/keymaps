@@ -3,6 +3,9 @@
 My qmk colemak mod dh keymap configuration for the
 [Ferris Sweep](https://github.com/davidphilipbarr/Sweep) keyboard.
 
+> **Retired.** This keymap is no longer maintained and doesn't have the
+> home-row mod tuning of the Charybdis and Dilemma keymaps.
+
 # Usage
 
 1. Clone the qmk firmware repository:
@@ -16,7 +19,7 @@ directory:
 
 ```
 cd keymaps
-ln -sr aktersnurra ../qmk_firmware/keyboards/ferris/keymaps
+ln -sr aktersnurra/ferris ../qmk_firmware/keyboards/ferris/keymaps/aktersnurra
 ```
 
 3. Go to the `qmk_firmware` directory
