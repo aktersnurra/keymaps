@@ -12,7 +12,7 @@ half). Layers and home-row mod behaviour are described in the
   Nav layer is held. Circular scrolling is enabled: trace a circle along the
   edge of the pad to scroll.
 - **Thumbs:** three keys on each side. The extra, outermost right thumb key is
-  Gui on the base layer.
+  Repeat: it sends the last key again.
 - **RGB:** toggle and cycle effects from the Fun layer.
 - **Encoders (if fitted):** the board's defaults apply: scroll on the left,
   volume on the right.

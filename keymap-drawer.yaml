@@ -55,7 +55,7 @@ parse_config:
     DOWN: ↓
     UP: ↑
     RIGHT: →
-    LGUI: Gui
+    QK_REP: Repeat
     LALT(LCTL): CtlAlt
     LALT(KC_LCTL): CtlAlt
     # Pointer

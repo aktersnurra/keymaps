@@ -12,8 +12,9 @@ retired and no longer maintained.
 
 ![Charybdis Nano layers](images/charybdis.svg)
 
-The Dilemma has the same layers plus Gui on its extra, outer right thumb and RGB
-keys on Fun: see [its README](aktersnurra/dilemma). Small labels under a key
+The Dilemma has the same layers plus a Repeat key (sends the last key again) on
+its extra, outer right thumb and RGB keys on Fun: see
+[its README](aktersnurra/dilemma). Small labels under a key
 are what it does when held; the highlighted key is the one holding the layer.
 
 - **Base:** Colemak Mod-DH. The home row holds Gui, Alt, Ctrl and Shift on both
