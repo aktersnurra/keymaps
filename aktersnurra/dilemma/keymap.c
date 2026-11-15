@@ -27,6 +27,15 @@ enum td_keycodes {
 tap_dance_action_t tap_dance_actions[] = {
     [SFT_RP] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, sftrp_finished, sftrp_reset)};
 
+// Thumb layer keys get a shorter term so layers (and sniping) engage sooner.
+// Everything else follows the global term, which DT_UP/DT_DOWN adjust live.
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+  if (IS_QK_LAYER_TAP(keycode)) {
+    return 180;
+  }
+  return g_tapping_term;
+}
+
 // A mod-tap only becomes a hold when the next key is on the other hand.
 // Thumb layer keys are exempt: their layers have keys on both hands.
 bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record,
@@ -99,7 +108,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_FUN] = LAYOUT_split_3x5_3( /* [> Function layer <] */
     KC_TRNS, KC_TRNS, RM_TOGG, RM_PREV,    RM_NEXT,       KC_TRNS, QK_BOOT, KC_TRNS, KC_TRNS, EE_CLR, 
     KC_TRNS, KC_TRNS, KC_TRNS, KC_ALT_CTL, KC_TRNS,        KC_TRNS, KC_F1,   KC_F2,   KC_F3,   KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,    KC_TRNS,        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+    KC_TRNS, KC_TRNS, DT_DOWN, DT_UP,      DT_PRNT,        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                       KC_TRNS, KC_TRNS,    KC_TRNS,        KC_TRNS, KC_TRNS, KC_TRNS
   ),
 };
