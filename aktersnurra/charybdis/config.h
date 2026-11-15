@@ -22,6 +22,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define PERMISSIVE_HOLD
 #define FLOW_TAP_TERM 150
 
+#define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
+
 #define CHARYBDIS_MINIMUM_DEFAULT_DPI 500
 #define CHARYBDIS_DEFAULT_DPI_CONFIG_STEP 200
 #define CHARYBDIS_MINIMUM_SNIPING_DPI 100

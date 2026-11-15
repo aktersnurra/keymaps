@@ -35,24 +35,26 @@ Thumbs: hold Space for **Nav**, Backspace for **Sym**, Tab for **Num**.
 
 ```
  ·    !    %    $    &          @    *    ^    ·    ·
- `    #    (    )²   -          =    [²   ]    '    |
- ·    ·    ·    ·    ·          ·    ·    ·    ·    \
+ `    #    (    )    -          =    [    ]    '    |
+ ~    ·    <    >    _          +    {    }    "    \
            ·   Spc   ·          ·    ·
 ```
 
-² `)` and `[` act as Shift when held, so `{`, `}` and other shifted symbols
-stay on this layer.
+Shifted symbols sit on the bottom row, mostly right below their unshifted
+pair (`` ` `` → `~`, `-` → `_`, `=` → `+`, `[` → `{`, `'` → `"`).
 
 ### Nav (hold Space)
 
 ```
- ·    ·   WhDn WhUp  ·          ·    ·    ·    ·    ·
- ·    ·   Btn1 Btn2  ·          ←    ↓    ↑    →    ·
- ·    ·    ·    ·    ·          ·    ·    ·    ·    ·
-           ·    ·    ·         Bspc  ·
+ ·    ·   WhDn WhUp  ·         Home PgDn PgUp End   ·
+ ·   Btn3 Btn2 Btn1  ·          ←    ↓    ↑    →    ·
+ ·    ·    ·   Drg⁴  ·          ·    ·    ·    ·    ·
+           ·    ·    ·         Bspc Del
 ```
 
-The pointer switches to sniping (slow, precise) while Nav is held.
+- The pointer switches to sniping (slow, precise) while Nav is held.
+- Btn1/Btn2/Btn3 are left, right and middle click.
+- ⁴ Charybdis only: hold to scroll with the trackball.
 
 ### Num (hold Tab)
 
@@ -74,12 +76,14 @@ The pointer switches to sniping (slow, precise) while Nav is held.
 ### Fun (Num + Space thumb)
 
 ```
- ·    ·   Rgb³ Rgb³ Rgb³        ·   Boot  ·    ·   EeClr
- ·    ·    ·  CtlAlt ·          ·    F1   F2   F3   ·
- ·    ·   TT-  TT+  TT?         ·    ·    ·    ·    ·
+ Boot   ·    Rgb³  Rgb³  Rgb³       ·     F4    F5    F6    F7
+  ·     ·     ·    CtAl   ·        F12    F1    F2    F3    F11
+ EeClr  ·    TT-   TT+   TT?        ·     F8    F9    F10   ·
 ```
 
 - **Boot** reboots into the bootloader, **EeClr** clears the EEPROM.
+- The most used F-keys are on the home row: F1–F3 (with **CtAl** for
+  Ctrl+Alt+F1–F3), F11 and F12.
 - **TT-/TT+/TT?** lower, raise and type the tapping term (see below).
 - ³ Dilemma only: RGB toggle, previous effect, next effect.
 
@@ -88,11 +92,14 @@ The pointer switches to sniping (slow, precise) while Nav is held.
 Tuned to avoid accidental modifiers while typing:
 
 - **Chordal Hold:** a home-row key is only a modifier when the next key is on
-  the other hand. Thumb layer keys are exempt.
+  the other hand. Thumb keys count as either hand, so Gui+Enter or Ctrl+Esc
+  work from the left hand too.
 - **Flow Tap (150 ms):** while typing quickly, home-row keys always tap. Shift
   is exempt so capitals mid-sentence still work.
 - **Permissive Hold:** a deliberate mod+key press registers without waiting.
 - **Tapping term:** 250 ms for home-row keys, 180 ms for thumb keys.
+- **Caps Word:** hold both Shift keys (T and N) to type in capitals until the
+  end of the word.
 
 ### Tuning the tapping term
 
@@ -141,5 +148,5 @@ aktersnurra/
 ├── charybdis/   keymap.c, config.h, rules.mk
 ├── dilemma/     keymap.c, config.h, rules.mk
 ├── ferris/      retired
-└── sftrp.c      tap dance for ")" / Shift, shared by all keymaps
+└── sftrp.c      ")" / Shift tap dance, used only by the Ferris keymap
 ```

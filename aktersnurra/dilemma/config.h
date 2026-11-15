@@ -27,6 +27,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define PERMISSIVE_HOLD
 #define FLOW_TAP_TERM 150
 
+#define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
+
 #define POINTING_DEVICE_AUTO_MOUSE_ENABLE
 #define AUTO_MOUSE_TIME 800
 #define AUTO_MOUSE_DEBOUNCE 50

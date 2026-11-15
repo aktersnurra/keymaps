@@ -1,5 +1,4 @@
 #include QMK_KEYBOARD_H
-#include "../sftrp.c"
 
 #define KC_HA GUI_T(KC_A)
 #define KC_HR ALT_T(KC_R)
@@ -9,9 +8,7 @@
 #define KC_HO GUI_T(KC_O)
 #define KC_HI ALT_T(KC_I)
 #define KC_HE CTL_T(KC_E)
-#define KC_HN SFT_T(KC_N)
-
-#define KC_SLBRC SFT_T(KC_LBRC)
+#define KC_HN RSFT_T(KC_N)
 
 #define KC_ALT_CTL LALT(KC_LCTL)
 
@@ -20,12 +17,6 @@
 #define NUM LT(_NUM, KC_TAB)
 
 enum { _COLEMAK_DH, _NAV, _NUM, _SYM, _FUN, _MEDIA, } layers;
-enum td_keycodes {
-  SFT_RP,
-};
-
-tap_dance_action_t tap_dance_actions[] = {
-    [SFT_RP] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, sftrp_finished, sftrp_reset)};
 
 // Thumb layer keys get a shorter term so layers (and sniping) engage sooner.
 // Everything else follows the global term, which DT_UP/DT_DOWN adjust live.
@@ -37,14 +28,14 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 }
 
 // A mod-tap only becomes a hold when the next key is on the other hand.
-// Thumb layer keys are exempt: their layers have keys on both hands.
-bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record,
-                      uint16_t other_keycode, keyrecord_t *other_record) {
-  if (IS_QK_LAYER_TAP(tap_hold_keycode)) {
-    return true;
-  }
-  return get_chordal_hold_default(tap_hold_record, other_record);
-}
+// Thumb keys ('*') count as either hand, so home row mods combine with them
+// (Gui+Enter, Ctrl+Esc) and thumb layer keys combine with anything.
+const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM = LAYOUT_split_3x5_3(
+  'L', 'L', 'L', 'L', 'L',      'R', 'R', 'R', 'R', 'R',
+  'L', 'L', 'L', 'L', 'L',      'R', 'R', 'R', 'R', 'R',
+  'L', 'L', 'L', 'L', 'L',      'R', 'R', 'R', 'R', 'R',
+            '*', '*', '*',      '*', '*', '*'
+);
 
 // While typing quickly, home row mods are always taps. Layer keys and
 // Shift are exempt, so thumb layers and capitals mid-sentence still work.
@@ -56,7 +47,6 @@ uint16_t get_flow_tap_term(uint16_t keycode, keyrecord_t *record,
   switch (keycode) {
   case KC_HT:
   case KC_HN:
-  case KC_SLBRC:
     return 0;
   default:
     return FLOW_TAP_TERM;
@@ -79,16 +69,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_SYM] = LAYOUT_split_3x5_3( /* [> Symbol layer <] */
     KC_TRNS, KC_EXLM, KC_PERC, KC_DLR,     KC_AMPR,     KC_AT,  KC_ASTR,  KC_CIRC, KC_TRNS, KC_TRNS,
-    KC_GRV,  KC_HASH, KC_LPRN, TD(SFT_RP), KC_MINS,     KC_EQL,  KC_SLBRC, KC_RBRC, KC_QUOT, KC_PIPE,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,    KC_TRNS,     KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_BSLS,
+    KC_GRV,  KC_HASH, KC_LPRN, KC_RPRN,    KC_MINS,     KC_EQL,  KC_LBRC,  KC_RBRC, KC_QUOT, KC_PIPE,
+    KC_TILD, KC_TRNS, KC_LT,   KC_GT,      KC_UNDS,     KC_PLUS, KC_LCBR,  KC_RCBR, KC_DQUO, KC_BSLS,
                       KC_TRNS, KC_SPC,     KC_TRNS,     KC_TRNS, KC_TRNS,  KC_TRNS
   ),
 
   [_NAV] = LAYOUT_split_3x5_3( /* [> Mouse/Nav layer <] */
-    KC_TRNS, KC_TRNS, KC_WH_D, KC_WH_U, KC_TRNS,        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_BTN1, KC_BTN2, KC_TRNS,        KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                      KC_TRNS, KC_TRNS, KC_TRNS,        KC_BSPC, KC_TRNS, KC_TRNS
+    KC_TRNS, KC_TRNS, KC_WH_D, KC_WH_U, KC_TRNS,        KC_HOME, KC_PGDN, KC_PGUP, KC_END,   KC_TRNS,
+    KC_TRNS, KC_BTN3, KC_BTN2, KC_BTN1, KC_TRNS,        KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, KC_TRNS,
+    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS,
+                      KC_TRNS, KC_TRNS, KC_TRNS,        KC_BSPC, KC_DEL, KC_TRNS
   ),
 
   [_NUM] = LAYOUT_split_3x5_3( /* [> Number layer <] */
@@ -106,9 +96,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [_FUN] = LAYOUT_split_3x5_3( /* [> Function layer <] */
-    KC_TRNS, KC_TRNS, RM_TOGG, RM_PREV,    RM_NEXT,       KC_TRNS, QK_BOOT, KC_TRNS, KC_TRNS, EE_CLR, 
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_ALT_CTL, KC_TRNS,        KC_TRNS, KC_F1,   KC_F2,   KC_F3,   KC_TRNS,
-    KC_TRNS, KC_TRNS, DT_DOWN, DT_UP,      DT_PRNT,        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+    QK_BOOT, KC_TRNS, RM_TOGG, RM_PREV,    RM_NEXT,       KC_TRNS, KC_F4,   KC_F5,   KC_F6,   KC_F7,
+    KC_TRNS, KC_TRNS, KC_TRNS, KC_ALT_CTL, KC_TRNS,        KC_F12,  KC_F1,   KC_F2,   KC_F3,   KC_F11,
+    EE_CLR,  KC_TRNS, DT_DOWN, DT_UP,      DT_PRNT,        KC_TRNS, KC_F8,   KC_F9,   KC_F10,  KC_TRNS,
                       KC_TRNS, KC_TRNS,    KC_TRNS,        KC_TRNS, KC_TRNS, KC_TRNS
   ),
 };
