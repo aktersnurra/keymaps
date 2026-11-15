@@ -4,6 +4,8 @@ Keymap for the Bastard KB Dilemma (3x5_3 with a Cirque touchpad on the right
 half). Layers and home-row mod behaviour are described in the
 [main README](../../README.md).
 
+![Dilemma layers](../../images/dilemma.svg)
+
 ## Board-specific settings
 
 - **Touchpad:** default DPI starts at 256 (step 32). Sniping turns on while the

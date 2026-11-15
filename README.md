@@ -10,82 +10,27 @@ retired and no longer maintained.
 
 ## Layers
 
-`·` is transparent. Home-row keys are modifiers when held, letters when tapped.
+![Charybdis Nano layers](images/charybdis.svg)
 
-### Base (Colemak Mod-DH)
+The Dilemma has the same layers plus a Gui key on its third right thumb and RGB
+keys on Fun: see [its README](aktersnurra/dilemma). Small labels under a key
+are what it does when held; the highlighted key is the one holding the layer.
 
-```
- Q    W    F    P    B          J    L    U    Y    ;
- A    R    S    T    G          M    N    E    I    O
- Z    X    C    D    V          K    H    ,    .    /
-          Ent  Spc  Esc        Bspc Tab  Gui¹
-```
+- **Base:** Colemak Mod-DH. The home row holds Gui, Alt, Ctrl and Shift on both
+  hands; the thumbs hold the Nav, Sym and Num layers.
+- **Sym:** shifted symbols sit on the bottom row, mostly right below their
+  unshifted pair (`` ` `` → `~`, `-` → `_`, `=` → `+`, `[` → `{`, `'` → `"`).
+- **Nav:** the pointer switches to sniping (slow, precise) while Nav is held.
+  On the Charybdis, hold **Scroll** to scroll with the trackball.
+- **Num:** hold the Enter or Space thumb on top of Num for **Media** or **Fun**.
+- **Fun:** the most used F-keys are on the home row: F1–F3 (with **CtlAlt** for
+  Ctrl+Alt+F1–F3), F11 and F12. **Boot** reboots into the bootloader and
+  **EeClr** clears the EEPROM. **TT−/TT+/TT?** tune the tapping term (see
+  below).
 
-| Hold      | Left | Right |
-|-----------|------|-------|
-| Gui       | A    | O     |
-| Alt       | R    | I     |
-| Ctrl      | S    | E     |
-| Shift     | T    | N     |
-
-Thumbs: hold Space for **Nav**, Backspace for **Sym**, Tab for **Num**.
-¹ Dilemma only (third right thumb key).
-
-### Sym (hold Backspace)
-
-```
- ·    !    %    $    &          @    *    ^    ·    ·
- `    #    (    )    -          =    [    ]    '    |
- ~    ·    <    >    _          +    {    }    "    \
-           ·   Spc   ·          ·    ·
-```
-
-Shifted symbols sit on the bottom row, mostly right below their unshifted
-pair (`` ` `` → `~`, `-` → `_`, `=` → `+`, `[` → `{`, `'` → `"`).
-
-### Nav (hold Space)
-
-```
- ·    ·   WhDn WhUp  ·         Home PgDn PgUp End   ·
- ·   Btn3 Btn2 Btn1  ·          ←    ↓    ↑    →    ·
- ·    ·    ·   Drg⁴  ·          ·    ·    ·    ·    ·
-           ·    ·    ·         Bspc Del
-```
-
-- The pointer switches to sniping (slow, precise) while Nav is held.
-- Btn1/Btn2/Btn3 are left, right and middle click.
-- ⁴ Charybdis only: hold to scroll with the trackball.
-
-### Num (hold Tab)
-
-```
- ·    4    5    6    ·          ·    ·    ·    ·    ·
- ·    1    2    3    0          ·    7    8    9    ·
- ·    ·    ·    ·    ·          ·    ·    ·    ·    ·
-         Media  Fun  ·          ·    ·
-```
-
-### Media (Num + Enter thumb)
-
-```
- ·    ·    ·    ·    ·          ·    ·    ·    ·    ·
- ·   Prev Play Next  ·          ·   Vol- Vol+ Mute  ·
- ·    ·    ·    ·    ·          ·    ·    ·    ·    ·
-```
-
-### Fun (Num + Space thumb)
-
-```
- Boot   ·    Rgb³  Rgb³  Rgb³       ·     F4    F5    F6    F7
-  ·     ·     ·    CtAl   ·        F12    F1    F2    F3    F11
- EeClr  ·    TT-   TT+   TT?        ·     F8    F9    F10   ·
-```
-
-- **Boot** reboots into the bootloader, **EeClr** clears the EEPROM.
-- The most used F-keys are on the home row: F1–F3 (with **CtAl** for
-  Ctrl+Alt+F1–F3), F11 and F12.
-- **TT-/TT+/TT?** lower, raise and type the tapping term (see below).
-- ³ Dilemma only: RGB toggle, previous effect, next effect.
+The images are generated from the keymaps with
+[keymap-drawer](https://github.com/caksoylar/keymap-drawer): run `./draw.sh`
+after changing a keymap.
 
 ## Home-row mods
 
@@ -103,7 +48,7 @@ Tuned to avoid accidental modifiers while typing:
 
 ### Tuning the tapping term
 
-`TT-` and `TT+` change the home-row term by 5 ms, and `TT?` types the current
+`TT−` and `TT+` change the home-row term by 5 ms, and `TT?` types the current
 value. Changes are lost on unplug. Once you settle on a value, set
 `TAPPING_TERM` in each board's `config.h`.
 
@@ -145,10 +90,13 @@ board's README for the steps.
 ## Layout of this repository
 
 ```
-flash.sh         build and flash both halves of a board
+flash.sh             build and flash both halves of a board
+draw.sh              regenerate the layer images
+keymap-drawer.yaml   key labels for the images
+images/              generated layer images
 aktersnurra/
-├── charybdis/   keymap.c, config.h, rules.mk
-├── dilemma/     keymap.c, config.h, rules.mk
-├── ferris/      retired
-└── sftrp.c      ")" / Shift tap dance, used only by the Ferris keymap
+├── charybdis/       keymap.c, config.h, rules.mk
+├── dilemma/         keymap.c, config.h, rules.mk
+├── ferris/          retired
+└── sftrp.c          ")" / Shift tap dance, used only by the Ferris keymap
 ```

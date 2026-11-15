@@ -1,0 +1,83 @@
+# keymap-drawer config used by draw.sh.
+# Note: qmk_keycode_map replaces keymap-drawer's defaults, so every keycode
+# that needs a nicer label is listed here.
+
+draw_config:
+  dark_mode: auto
+  append_colon_to_layer_header: false
+
+parse_config:
+  trans_legend: {t: '', type: trans}
+  qmk_keycode_map:
+    # Symbols
+    SCLN: ';'
+    COMM: ','
+    DOT: '.'
+    SLSH: '/'
+    EXLM: '!'
+    PERC: '%'
+    DLR: '$'
+    AMPR: '&'
+    AT: '@'
+    ASTR: '*'
+    CIRC: '^'
+    GRV: '`'
+    HASH: '#'
+    LPRN: '('
+    RPRN: ')'
+    MINS: '-'
+    EQL: '='
+    LBRC: '['
+    RBRC: ']'
+    QUOT: "'"
+    PIPE: '|'
+    TILD: '~'
+    LT: '<'
+    GT: '>'
+    UNDS: '_'
+    PLUS: '+'
+    LCBR: '{'
+    RCBR: '}'
+    DQUO: '"'
+    BSLS: '\'
+    # Editing and navigation
+    ENT: Enter
+    SPC: Space
+    BSPC: Bksp
+    TAB: Tab
+    ESC: Esc
+    DEL: Del
+    HOME: Home
+    END: End
+    PGUP: PgUp
+    PGDN: PgDn
+    LEFT: ←
+    DOWN: ↓
+    UP: ↑
+    RIGHT: →
+    LGUI: Gui
+    LALT(LCTL): CtlAlt
+    LALT(KC_LCTL): CtlAlt
+    # Pointer
+    BTN1: LClk
+    BTN2: RClk
+    BTN3: MClk
+    WH_D: Wh↓
+    WH_U: Wh↑
+    DRGSCRL: Scroll
+    # Media
+    MPRV: Prev
+    MPLY: Play
+    MNXT: Next
+    VOLD: Vol−
+    VOLU: Vol+
+    MUTE: Mute
+    # Firmware
+    QK_BOOT: Boot
+    EE_CLR: EeClr
+    DT_DOWN: TT−
+    DT_UP: TT+
+    DT_PRNT: TT?
+    RM_TOGG: RGB
+    RM_PREV: RGB−
+    RM_NEXT: RGB+

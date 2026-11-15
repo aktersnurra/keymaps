@@ -4,6 +4,8 @@ Keymap for the Bastard KB Charybdis Nano (3x5 with a trackball on the right
 half). Layers and home-row mod behaviour are described in the
 [main README](../../README.md).
 
+![Charybdis Nano layers](../../images/charybdis.svg)
+
 ## Board-specific settings
 
 - **Trackball:** default DPI starts at 500 (step 200). Sniping DPI starts at
