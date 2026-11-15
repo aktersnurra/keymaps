@@ -12,7 +12,7 @@ retired and no longer maintained.
 
 ![Charybdis Nano layers](images/charybdis.svg)
 
-The Dilemma has the same layers plus a Gui key on its third right thumb and RGB
+The Dilemma has the same layers plus Gui on its extra, outer right thumb and RGB
 keys on Fun: see [its README](aktersnurra/dilemma). Small labels under a key
 are what it does when held; the highlighted key is the one holding the layer.
 

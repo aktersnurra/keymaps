@@ -20,6 +20,23 @@ draw() {
 		-o "$out/$board.json" >/dev/null 2>&1
 	qmk info -kb "$kb" -f json >"$out/$board.info.json" 2>/dev/null
 
+	# QMK's Dilemma layout data draws the right thumb keys in reverse order.
+	# On the board they run Bksp, Tab, extra key from the inside out, like the
+	# Charybdis, so place them by their matrix position.
+	if [ "$board" = dilemma ]; then
+		python3 - "$out/$board.info.json" <<'EOF'
+import json, sys
+path = sys.argv[1]
+info = json.load(open(path))
+x = {(7, 1): 9, (7, 0): 10, (7, 2): 11}
+for layout in info["layouts"].values():
+    for key in layout["layout"]:
+        if tuple(key["matrix"]) in x:
+            key["x"] = x[tuple(key["matrix"])]
+json.dump(info, open(path, "w"))
+EOF
+	fi
+
 	# The export keeps layer references by name (LT(_NAV, ...)) and lists the
 	# layers in source order; keymap-drawer needs layer numbers in that order.
 	names=$(python3 - "$repo/aktersnurra/$board/keymap.c" "$out/$board.json" <<'EOF'
