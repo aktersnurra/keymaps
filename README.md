@@ -139,11 +139,13 @@ qmk compile -kb bastardkb/dilemma/3x5_3 -km aktersnurra
 The `.uf2` files land in `qmk_userspace/`. Don't use `qmk userspace-compile`:
 it builds the `vendor` keymaps listed in `qmk_userspace/qmk.json`, not these.
 
-See each board's README for flashing.
+To flash, run `./flash.sh charybdis` or `./flash.sh dilemma`; see each
+board's README for the steps.
 
 ## Layout of this repository
 
 ```
+flash.sh         build and flash both halves of a board
 aktersnurra/
 ├── charybdis/   keymap.c, config.h, rules.mk
 ├── dilemma/     keymap.c, config.h, rules.mk

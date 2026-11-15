@@ -25,15 +25,14 @@ the [main README](../../README.md#building) for the one-time setup.
 
 ## Flashing
 
-Flash both halves: connect each half by USB in turn and repeat these steps.
+From the repository root:
 
-1. Enter the bootloader: press **Boot** on the Fun layer (hold Tab, then
-   Space, then press Q), or double-tap the reset button.
-2. Mount the controller, which shows up as a USB drive named `RPI-RP2`.
-3. Copy the firmware over:
+```sh
+./flash.sh dilemma
+```
 
-   ```sh
-   doas cp bastardkb_dilemma_3x5_3_aktersnurra.uf2 /mnt/usb
-   ```
-
-The half reboots by itself once the copy finishes.
+It builds the firmware, asks for your `doas` password while the keyboard still
+works, then walks you through the halves one at a time. For each half, plug the
+USB cable into it and enter the bootloader: press **Boot** (hold Tab, then
+Space, then press Q) or double-tap the reset button. Once a half is in the
+bootloader, the script flashes it with no typing needed.
