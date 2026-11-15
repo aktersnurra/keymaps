@@ -18,6 +18,56 @@
 
 enum { _COLEMAK_DH, _NAV, _NUM, _SYM, _FUN, _MEDIA, } layers;
 
+enum custom_keycodes {
+  SW_ARNG = SAFE_RANGE, // å
+  SW_ADIA,              // ä
+  SW_ODIA,              // ö
+};
+
+// Types å, ä and ö while the computer stays on a US layout, using the
+// computer's own input method: Option sequences on macOS (ABC/U.S. input
+// source) and AltGr on Linux (us layout, altgr-intl variant). Hold Shift for
+// capitals.
+static void tap_swedish(uint16_t keycode) {
+  if (detected_host_os() == OS_MACOS) {
+    if (keycode == SW_ARNG) {
+      tap_code16(LALT(KC_A)); // Option+A, Shift is kept for Å
+      return;
+    }
+    // Option+U is the umlaut dead key, but only without Shift.
+    const uint8_t mods = get_mods();
+    del_mods(MOD_MASK_SHIFT);
+    tap_code16(LALT(KC_U));
+    set_mods(mods);
+    tap_code(keycode == SW_ADIA ? KC_A : KC_O);
+    return;
+  }
+  switch (keycode) {
+  case SW_ARNG:
+    tap_code16(RALT(KC_W));
+    break;
+  case SW_ADIA:
+    tap_code16(RALT(KC_Q));
+    break;
+  case SW_ODIA:
+    tap_code16(RALT(KC_P));
+    break;
+  }
+}
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+  case SW_ARNG:
+  case SW_ADIA:
+  case SW_ODIA:
+    if (record->event.pressed) {
+      tap_swedish(keycode);
+    }
+    return false;
+  }
+  return true;
+}
+
 // Thumb layer keys get a shorter term so layers (and sniping) engage sooner.
 // Everything else follows the global term, which DT_UP/DT_DOWN adjust live.
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
@@ -75,9 +125,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [_NAV] = LAYOUT_split_3x5_3( /* [> Mouse/Nav layer <] */
-    KC_TRNS, KC_TRNS, KC_WH_D, KC_WH_U, KC_TRNS,        KC_HOME, KC_PGDN, KC_PGUP, KC_END,   KC_TRNS,
-    KC_TRNS, KC_BTN3, KC_BTN2, KC_BTN1, KC_TRNS,        KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS,
+    KC_TRNS, KC_TRNS, KC_WH_D, KC_WH_U, KC_TRNS,        KC_HOME, KC_PGDN, KC_PGUP, KC_END,   SW_ARNG,
+    KC_TRNS, KC_BTN3, KC_BTN2, KC_BTN1, KC_TRNS,        KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, SW_ODIA,
+    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  SW_ADIA,
                       KC_TRNS, KC_TRNS, KC_TRNS,        KC_BSPC, KC_DEL, KC_TRNS
   ),
 

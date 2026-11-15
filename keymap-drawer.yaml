@@ -56,6 +56,9 @@ parse_config:
     UP: ↑
     RIGHT: →
     QK_REP: Repeat
+    SW_ARNG: å
+    SW_ADIA: ä
+    SW_ODIA: ö
     LALT(LCTL): CtlAlt
     LALT(KC_LCTL): CtlAlt
     # Pointer

@@ -22,7 +22,8 @@ are what it does when held; the highlighted key is the one holding the layer.
 - **Sym:** shifted symbols sit on the bottom row, mostly right below their
   unshifted pair (`` ` `` → `~`, `-` → `_`, `=` → `+`, `[` → `{`, `'` → `"`).
 - **Nav:** the pointer switches to sniping (slow, precise) while Nav is held.
-  On the Charybdis, hold **Scroll** to scroll with the trackball.
+  On the Charybdis, hold **Scroll** to scroll with the trackball. **å, ö, ä**
+  sit on the right pinky column (see [Swedish letters](#swedish-letters)).
 - **Num:** hold the Enter or Space thumb on top of Num for **Media** or **Fun**.
 - **Fun:** the most used F-keys are on the home row: F1–F3 (with **CtlAlt** for
   Ctrl+Alt+F1–F3), F11 and F12. **Boot** reboots into the bootloader and
@@ -52,6 +53,21 @@ Tuned to avoid accidental modifiers while typing:
 `TT−` and `TT+` change the home-row term by 5 ms, and `TT?` types the current
 value. Changes are lost on unplug. Once you settle on a value, set
 `TAPPING_TERM` in each board's `config.h`.
+
+## Swedish letters
+
+The å, ö and ä keys on Nav type the letters while the computer stays on a US
+layout, so there's no layout switching. The keyboard detects the computer's OS
+and uses its own input method:
+
+- **macOS:** Option+A for å and Option+U then A/O for ä/ö. Needs the ABC or
+  U.S. input source; nothing else to set up.
+- **Linux:** Right Alt+W/Q/P, which needs the `altgr-intl` variant of the US
+  layout: `setxkbmap -layout us -variant altgr-intl`. It's identical to plain
+  US apart from Right Alt.
+
+Hold the left Shift (T) for Å, Ä and Ö. The right Shift (N) can count as a
+same-hand roll with these keys and type an n instead.
 
 ## Building
 
