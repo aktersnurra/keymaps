@@ -24,10 +24,41 @@ enum td_keycodes {
   SFT_RP,
 };
 
-#define DILEMMA_AUTO_SNIPING_ON_LAYER _NAV
-
 tap_dance_action_t tap_dance_actions[] = {
     [SFT_RP] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, sftrp_finished, sftrp_reset)};
+
+// A mod-tap only becomes a hold when the next key is on the other hand.
+// Thumb layer keys are exempt: their layers have keys on both hands.
+bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t *tap_hold_record,
+                      uint16_t other_keycode, keyrecord_t *other_record) {
+  if (IS_QK_LAYER_TAP(tap_hold_keycode)) {
+    return true;
+  }
+  return get_chordal_hold_default(tap_hold_record, other_record);
+}
+
+// While typing quickly, home row mods are always taps. Layer keys and
+// Shift are exempt, so thumb layers and capitals mid-sentence still work.
+uint16_t get_flow_tap_term(uint16_t keycode, keyrecord_t *record,
+                           uint16_t prev_keycode) {
+  if (!IS_QK_MOD_TAP(keycode) || !is_flow_tap_key(prev_keycode)) {
+    return 0;
+  }
+  switch (keycode) {
+  case KC_HT:
+  case KC_HN:
+  case KC_SLBRC:
+    return 0;
+  default:
+    return FLOW_TAP_TERM;
+  }
+}
+
+// Slow, precise pointer while the Nav layer is held.
+layer_state_t layer_state_set_user(layer_state_t state) {
+  dilemma_set_pointer_sniping_enabled(layer_state_cmp(state, _NAV));
+  return state;
+}
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_COLEMAK_DH] = LAYOUT_split_3x5_3( /* COLEMAK MOD DH */
@@ -66,7 +97,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [_FUN] = LAYOUT_split_3x5_3( /* [> Function layer <] */
-    KC_TRNS, KC_TRNS, RGB_TOG, RGB_RMOD,   RGB_MOD,        KC_TRNS, QK_BOOT, KC_TRNS, KC_TRNS, EE_CLR, 
+    KC_TRNS, KC_TRNS, RM_TOGG, RM_PREV,    RM_NEXT,       KC_TRNS, QK_BOOT, KC_TRNS, KC_TRNS, EE_CLR, 
     KC_TRNS, KC_TRNS, KC_TRNS, KC_ALT_CTL, KC_TRNS,        KC_TRNS, KC_F1,   KC_F2,   KC_F3,   KC_TRNS,
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,    KC_TRNS,        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                       KC_TRNS, KC_TRNS,    KC_TRNS,        KC_TRNS, KC_TRNS, KC_TRNS

@@ -16,9 +16,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #pragma once
-#define TAPPING_TERM 150
+#define TAPPING_TERM 250
+#define CHORDAL_HOLD
 #define PERMISSIVE_HOLD
-#define TAPPING_FORCE_HOLD
+#define FLOW_TAP_TERM 150
 
 #define CHARYBDIS_MINIMUM_DEFAULT_DPI 500
 #define CHARYBDIS_DEFAULT_DPI_CONFIG_STEP 200

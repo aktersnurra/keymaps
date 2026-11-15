@@ -21,9 +21,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define SPLIT_LAYER_STATE_ENABLE
 #define SPLIT_LED_STATE_ENABLE
 
-#define TAPPING_TERM 196
+#define TAPPING_TERM 250
+#define CHORDAL_HOLD
 #define PERMISSIVE_HOLD
-#define TAPPING_FORCE_HOLD
+#define FLOW_TAP_TERM 150
 
 #define POINTING_DEVICE_AUTO_MOUSE_ENABLE
 #define AUTO_MOUSE_TIME 800
