@@ -68,6 +68,7 @@ parse_config:
     WH_D: Wh↓
     WH_U: Wh↑
     DRGSCRL: Scroll
+    SNIPING: Snipe
     # Media
     MPRV: Prev
     MPLY: Play

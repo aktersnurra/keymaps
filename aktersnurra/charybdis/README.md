@@ -9,8 +9,9 @@ half). Layers and home-row mod behaviour are described in the
 ## Board-specific settings
 
 - **Trackball:** default DPI starts at 500 (step 200). Sniping DPI starts at
-  100 (step 100) and turns on while the Nav layer is held. Hold **Drg** on Nav
-  to scroll with the ball.
+  100 (step 100) and is on while **Snipe** is held. Hold **Scroll** on Nav or
+  Mouse to scroll with the ball. Moving the ball less than 20 counts doesn't
+  turn on the Mouse layer (`AUTO_MOUSE_THRESHOLD`).
 - **Thumbs:** three keys on the left, two on the right.
 
 ## Building

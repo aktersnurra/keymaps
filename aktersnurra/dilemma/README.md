@@ -8,8 +8,9 @@ half). Layers and home-row mod behaviour are described in the
 
 ## Board-specific settings
 
-- **Touchpad:** default DPI starts at 256 (step 32). Sniping turns on while the
-  Nav layer is held. Circular scrolling is enabled: trace a circle along the
+- **Touchpad:** default DPI starts at 256 (step 32). Sniping is on while
+  **Snipe** is held. Moving less than 20 counts doesn't turn on the Mouse layer
+  (`AUTO_MOUSE_THRESHOLD`). Circular scrolling is enabled: trace a circle along the
   edge of the pad to scroll.
 - **Thumbs:** three keys on each side. The extra, outermost right thumb key is
   Repeat: it sends the last key again.

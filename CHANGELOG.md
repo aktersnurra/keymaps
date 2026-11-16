@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-11-16 (later)
+
+Charybdis Nano and Dilemma:
+
+- Mouse layer turns on by itself when the pointer moves: clicks under the
+  right fingers, any other key types and turns it off, 800 ms timeout.
+- Sniping no longer turns on with Nav; hold **Snipe** (Nav, left pinky).
+
 ## 2026-11-16
 
 Charybdis Nano and Dilemma:

@@ -16,7 +16,7 @@
 #define SYM LT(_SYM, KC_BSPC)
 #define NUM LT(_NUM, KC_TAB)
 
-enum { _COLEMAK_DH, _NAV, _NUM, _SYM, _FUN, _MEDIA, } layers;
+enum { _COLEMAK_DH, _MOUSE, _NAV, _NUM, _SYM, _FUN, _MEDIA, } layers;
 
 enum custom_keycodes {
   SW_ARNG = SAFE_RANGE, // å
@@ -68,7 +68,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return true;
 }
 
-// Thumb layer keys get a shorter term so layers (and sniping) engage sooner.
+// Thumb layer keys get a shorter term so layers engage sooner.
 // Everything else follows the global term, which DT_UP/DT_DOWN adjust live.
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
   if (IS_QK_LAYER_TAP(keycode)) {
@@ -103,10 +103,24 @@ uint16_t get_flow_tap_term(uint16_t keycode, keyrecord_t *record,
   }
 }
 
-// Slow, precise pointer while the Nav layer is held.
-layer_state_t layer_state_set_user(layer_state_t state) {
-  charybdis_set_pointer_sniping_enabled(layer_state_cmp(state, _NAV));
-  return state;
+// Moving the pointer turns on the Mouse layer: clicks under the right
+// fingers while the thumb works the pointer. Any other key types as usual and
+// turns the layer off; it also turns off AUTO_MOUSE_TIME after the last
+// pointer movement or click.
+void pointing_device_init_user(void) {
+  set_auto_mouse_layer(_MOUSE);
+  set_auto_mouse_enable(true);
+}
+
+// Pointer mode keys keep the Mouse layer on, like mouse buttons do.
+bool is_mouse_record_user(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+  case DRGSCRL:
+  case SNIPING:
+    return true;
+  default:
+    return false;
+  }
 }
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -115,6 +129,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_HA, KC_HR, KC_HS, KC_HT,  KC_G,            KC_M, KC_HN, KC_HE,   KC_HI,  KC_HO,
     KC_Z,  KC_X,  KC_C,  KC_D,   KC_V,            KC_K, KC_H,  KC_COMM, KC_DOT, KC_SLSH,
                   KC_ENT, NAV,   KC_ESC,          SYM,  NUM
+  ),
+
+  [_MOUSE] = LAYOUT( /* [> Mouse layer, on while the pointer moves <] */
+    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,        KC_TRNS, KC_BTN1, KC_BTN2, KC_BTN3, KC_TRNS,
+    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,        KC_TRNS, DRGSCRL, KC_TRNS, KC_TRNS, KC_TRNS,
+                      KC_TRNS, KC_TRNS, KC_TRNS,        KC_TRNS, KC_TRNS
   ),
 
   [_SYM] = LAYOUT( /* [> Symbol layer <] */
@@ -126,7 +147,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_NAV] = LAYOUT( /* [> Mouse/Nav layer <] */
     KC_TRNS, KC_TRNS, KC_WH_D, KC_WH_U, KC_TRNS,        KC_HOME, KC_PGDN, KC_PGUP, KC_END,   SW_ARNG,
-    KC_TRNS, KC_BTN3, KC_BTN2, KC_BTN1, KC_TRNS,        KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, SW_ODIA,
+    SNIPING, KC_BTN3, KC_BTN2, KC_BTN1, KC_TRNS,        KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, SW_ODIA,
     KC_TRNS, KC_TRNS, KC_TRNS, DRGSCRL, KC_TRNS,        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  SW_ADIA,
                       KC_TRNS, KC_TRNS, KC_TRNS,        KC_BSPC, KC_DEL
   ),

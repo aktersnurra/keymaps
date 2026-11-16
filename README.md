@@ -21,9 +21,15 @@ are what it does when held; the highlighted key is the one holding the layer.
   hands; the thumbs hold the Nav, Sym and Num layers.
 - **Sym:** shifted symbols sit on the bottom row, mostly right below their
   unshifted pair (`` ` `` → `~`, `-` → `_`, `=` → `+`, `[` → `{`, `'` → `"`).
-- **Nav:** the pointer switches to sniping (slow, precise) while Nav is held.
-  On the Charybdis, hold **Scroll** to scroll with the trackball. **å, ö, ä**
-  sit on the right pinky column (see [Swedish letters](#swedish-letters)).
+- **Mouse:** turns on by itself when you move the pointer, putting clicks under
+  the right index, middle and ring fingers (and **Scroll** under the index on
+  the Charybdis) while the thumb works the pointer. Any other key types as
+  usual and turns the layer off; it also turns off 800 ms after the last
+  pointer movement or click. Mods keep it on, so Shift/Ctrl+click work.
+- **Nav:** clicks on the left hand too. Hold **Snipe** for a slow, precise
+  pointer. On the Charybdis, hold **Scroll** to scroll with the trackball.
+  **å, ö, ä** sit on the right pinky column (see
+  [Swedish letters](#swedish-letters)).
 - **Num:** hold the Enter or Space thumb on top of Num for **Media** or **Fun**.
 - **Fun:** the most used F-keys are on the home row: F1–F3 (with **CtlAlt** for
   Ctrl+Alt+F1–F3), F11 and F12. **Boot** reboots into the bootloader and
