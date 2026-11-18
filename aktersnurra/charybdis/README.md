@@ -32,7 +32,7 @@ From the repository root:
 ```
 
 It builds the firmware, asks for your `doas` password while the keyboard still
-works, then walks you through the halves one at a time. For each half, plug the
+works (Linux only; macOS needs no password), then walks you through the halves one at a time. For each half, plug the
 USB cable into it and enter the bootloader: press **Boot** (hold Tab, then
 Space, then press Q) or double-tap the reset button. Once a half is in the
 bootloader, the script flashes it with no typing needed.

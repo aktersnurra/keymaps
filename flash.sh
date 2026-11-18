@@ -3,9 +3,10 @@
 #
 # Usage: ./flash.sh charybdis|dilemma
 #
-# Enter your doas password when asked, while the keyboard still works. The
-# script then waits for each half to show up in bootloader mode and flashes it,
-# so no typing is needed once a half is in the bootloader.
+# On Linux, enter your doas password when asked, while the keyboard still works.
+# macOS needs no password. The script then waits for each half to show up in
+# bootloader mode and flashes it, so no typing is needed once a half is in the
+# bootloader.
 set -eu
 
 case "${1:-}" in
@@ -46,7 +47,25 @@ for side in right left; do
 	cp "$firmware" "$out/$side.uf2"
 done
 
-doas sh -s "$out" <<'EOF'
+case "$(uname -s)" in
+Darwin)
+	# macOS mounts the bootloader drive itself, so no root is needed.
+	mnt=/Volumes/RPI-RP2
+
+	for side in right left; do
+		echo
+		echo "Plug the USB cable into the $side half, then put it in bootloader mode:"
+		echo "press Boot (hold Tab, then Space, then press Q) or double-tap reset."
+		until [ -d "$mnt" ]; do sleep 0.2; done
+		sleep 1
+		cp "$out/$side.uf2" "$mnt"
+		sync
+		while [ -d "$mnt" ]; do sleep 0.2; done
+		echo "Flashed the $side half."
+	done
+	;;
+*)
+	doas sh -s "$out" <<'EOF'
 set -eu
 dir=$1
 dev=/dev/disk/by-label/RPI-RP2
@@ -71,3 +90,5 @@ for side in right left; do
 	echo "Flashed the $side half."
 done
 EOF
+	;;
+esac
