@@ -103,10 +103,10 @@ uint16_t get_flow_tap_term(uint16_t keycode, keyrecord_t *record,
   }
 }
 
-// Moving the pointer turns on the Mouse layer: clicks under the right
-// fingers while the thumb works the pointer. Any other key types as usual and
-// turns the layer off; it also turns off AUTO_MOUSE_TIME after the last
-// pointer movement or click.
+// Moving the pointer turns on the Mouse layer, which repeats Nav's mouse keys
+// so you can click without holding Nav. Any other key types as usual and turns
+// the layer off; it also turns off AUTO_MOUSE_TIME after the last pointer
+// movement or click.
 void pointing_device_init_user(void) {
   set_auto_mouse_layer(_MOUSE);
   set_auto_mouse_enable(true);
@@ -133,8 +133,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_MOUSE] = LAYOUT( /* [> Mouse layer, on while the pointer moves <] */
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,        KC_TRNS, KC_BTN1, KC_BTN2, KC_BTN3, KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,        KC_TRNS, DRGSCRL, KC_TRNS, KC_TRNS, KC_TRNS,
+    SNIPING, KC_BTN3, KC_BTN2, KC_BTN1, DRGSCRL,        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                       KC_TRNS, KC_TRNS, KC_TRNS,        KC_TRNS, KC_TRNS
   ),
 
@@ -147,8 +147,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_NAV] = LAYOUT( /* [> Mouse/Nav layer <] */
     KC_TRNS, KC_TRNS, KC_WH_D, KC_WH_U, KC_TRNS,        KC_HOME, KC_PGDN, KC_PGUP, KC_END,   SW_ARNG,
-    SNIPING, KC_BTN3, KC_BTN2, KC_BTN1, KC_TRNS,        KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, SW_ODIA,
-    KC_TRNS, KC_TRNS, KC_TRNS, DRGSCRL, KC_TRNS,        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  SW_ADIA,
+    SNIPING, KC_BTN3, KC_BTN2, KC_BTN1, DRGSCRL,        KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, SW_ODIA,
+    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  SW_ADIA,
                       KC_TRNS, KC_TRNS, KC_TRNS,        KC_BSPC, KC_DEL
   ),
 

@@ -103,10 +103,10 @@ uint16_t get_flow_tap_term(uint16_t keycode, keyrecord_t *record,
   }
 }
 
-// Moving the pointer turns on the Mouse layer: clicks under the right
-// fingers while the thumb works the pointer. Any other key types as usual and
-// turns the layer off; it also turns off AUTO_MOUSE_TIME after the last
-// pointer movement or click.
+// Moving the pointer turns on the Mouse layer, which repeats Nav's mouse keys
+// so you can click without holding Nav. Any other key types as usual and turns
+// the layer off; it also turns off AUTO_MOUSE_TIME after the last pointer
+// movement or click.
 void pointing_device_init_user(void) {
   set_auto_mouse_layer(_MOUSE);
   set_auto_mouse_enable(true);
@@ -133,7 +133,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_MOUSE] = LAYOUT_split_3x5_3( /* [> Mouse layer, on while the pointer moves <] */
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,        KC_TRNS, KC_BTN1, KC_BTN2, KC_BTN3, KC_TRNS,
+    SNIPING, KC_BTN3, KC_BTN2, KC_BTN1, KC_TRNS,        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                       KC_TRNS, KC_TRNS, KC_TRNS,        KC_TRNS, KC_TRNS, KC_TRNS
   ),
